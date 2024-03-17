@@ -9,6 +9,8 @@ namespace Calculator
 {
     internal class Parser
     {
+        Calculations calculations = new Calculations();
+
         string[] split;
         public enum Operators
         {
@@ -19,7 +21,7 @@ namespace Calculator
         }
         public Parser()
         {
-            Inputer();
+
         }
         public void Inputer()
         {
@@ -33,27 +35,27 @@ namespace Calculator
             {
                 case string s when s.Contains("+"):
                     split = s.Split('+');
-                    Caller(Operators.Addition.ToString());
+                    Caller(Operators.Addition);
                     break;
                 case string s when s.Contains("-"):
                     split = s.Split('-');
-                    Caller(Operators.Subtraction.ToString());
+                    Caller(Operators.Subtraction);
                     break;
                 case string s when s.Contains("*"):
                     split = s.Split('*');
-                    Caller(Operators.Multiplication.ToString());
+                    Caller(Operators.Multiplication);
                     break;
                 case string s when s.Contains("/"):
                     split = s.Split('/');
-                    Caller(Operators.Division.ToString());
+                    Caller(Operators.Division);
                     break;
                 default:
-                    throw new ArgumentException("Incorrect operation!");
+                    throw new ArgumentException("Incorrect or missing operation!");
             }
         }
-        private void Caller(string a)
+        private void Caller(Enum operation)
         {
-            Calculations calculationss = new Calculations(float.Parse(split[0]), a, float.Parse(split[1]));
+            Console.WriteLine(calculations.Calculate(split[0], operation, split[1])); // State check //
         }
     }
 }
