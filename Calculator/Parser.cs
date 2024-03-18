@@ -10,6 +10,7 @@ namespace Calculator
     internal class Parser
     {
         Calculations calculations = new Calculations();
+        public History history;
 
         string[] split;
         public enum Operators
@@ -53,9 +54,13 @@ namespace Calculator
                     throw new ArgumentException("Incorrect or missing operation!");
             }
         }
-        private void Caller(Enum operation)
+        private void Caller(Operators operation)
         {
-            Console.WriteLine(calculations.Calculate(split[0], operation, split[1])); // State check //
+            string fill = calculations.Calculate(split[0], operation, split[1]);
+            Console.WriteLine(fill);
+            history.HistoryAdd(Tuple.Create($"{split[0]},{operation},{split[1]} = {fill}"));
         }
+
+
     }
 }

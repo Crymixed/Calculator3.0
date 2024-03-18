@@ -13,6 +13,8 @@ namespace Calculator
         {
             Logic logic = new Logic();
             logic.Paths();
+
+
         }
     }
 }

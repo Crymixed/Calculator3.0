@@ -9,10 +9,17 @@ namespace Calculator
     internal class Logic
     {
         Parser parser = new Parser();
-        public Logic()
-        {
-
+        History history = new History();
+        private void CreateHistory()
+        { 
+            parser.history = history;
         }
+
+        public Logic()  
+        {
+            CreateHistory();
+        }
+
         public void Paths()
         {
 
@@ -25,10 +32,10 @@ namespace Calculator
                         parser.Inputer();
                         break;
                     case string s when s.Equals("show history"):
-                        //Show history()
+                        history.HistoryPrint();
                         break;
                     case string s when s.Equals("delete history"):
-                        //Delete history()
+                        history.HistoryClear();
                         break;
                     case string s when s.Equals("exit"):
                         Environment.Exit(0);

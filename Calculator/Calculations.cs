@@ -3,32 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Calculator.Parser;
 
 namespace Calculator
 {
     internal class Calculations
     {
-        public Calculations() 
+        public Calculations()
         {
 
         }
-        public string Calculate(string a, Enum operation,string b)
+        public string Calculate(string a, Operators operation, string b)
         {
-            float _a = float.Parse(a);
-            float _b = float.Parse(b);
+            double _a = double.Parse(a);
+            double _b = double.Parse(b);
 
-            switch (operation.ToString())
+            switch (operation)
             {
-                case string s when s.Equals("Addition"):
+                case Operators s when s == Operators.Addition:
                     return $"{_a + _b}";
-                case string s when s.Equals("Subtraction"):
+                case Operators s when s == Operators.Subtraction:
                     return $"{_a - _b}";
-                case string s when s.Equals("Multiplication"):
+                case Operators s when s == Operators.Multiplication:
                     return $"{_a * _b}";
-                case string s when s.Equals("Division"):
+                case Operators s when s == Operators.Division:
                     return $"{_a / _b}";
                 default:
-                    throw new Exception("?");
+                    throw new Exception("Unreachable");
             }
         }
     }
