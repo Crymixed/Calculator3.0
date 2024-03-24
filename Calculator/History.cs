@@ -18,7 +18,7 @@ namespace Calculator
 
         public void HistoryAdd(Tuple<string> item)
         {
-            history.Add(new Tuple<string, DateTime>(item.ToString(), DateTime.Now)); //?
+            history.Add(new Tuple<string, DateTime>(item.ToString(), DateTime.Now));
         }
         public void HistoryClear()
         {
@@ -26,16 +26,12 @@ namespace Calculator
             history.Clear(); 
         }
 
-        //public string HistorySlotPrint(int slot)
-        //{
-        //    Console.Write($"Your slot in history number {slot}");
-        //    return history[slot].ToString();
-        //}
-
         public void HistoryPrint()
         {
             foreach (Tuple<string, DateTime> i in history)
                 Console.Write(($"{i.Item1} {i.Item2}\n"));
+            Console.WriteLine("");
+
         }
     }
 }

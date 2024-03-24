@@ -27,10 +27,16 @@ namespace Calculator
                 case Operators s when s == Operators.Multiplication:
                     return $"{_a * _b}";
                 case Operators s when s == Operators.Division:
-                    return $"{_a / _b}";
+                    if (_b == 0)
+                        return "DividingByZero";
+                    else
+                        return $"{_a/_b}";
                 default:
-                    throw new Exception("Unreachable");
+                    return "Unreachable";
+
+
             }
         }
     }
 }
+

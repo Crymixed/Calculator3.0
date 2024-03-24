@@ -25,7 +25,11 @@ namespace Calculator
 
             while (true)
             {
-                Console.Write("Choose action: Calculator \n               Show history \n               Delete history\n               Exit\nAction: ");
+                Console.Write("Choose action or input math problem: " +
+                "Show history \n                                     " +
+                "Delete history\n                                     " +
+                "Exit\n                                     " +
+                "Action: ");
                 switch (Console.ReadLine().ToLower())
                 {
                     case string s when s.Equals("calculator"):
@@ -39,6 +43,12 @@ namespace Calculator
                         break;
                     case string s when s.Equals("exit"):
                         Environment.Exit(0);
+                        break;
+                    case string s when (s.Contains((char)Parser.Operators.Addition)) || (s.Contains((char)Parser.Operators.Subtraction)) || (s.Contains((char)Parser.Operators.Multiplication)) || (s.Contains((char)Parser.Operators.Division)):
+                        parser.MultipleOperators(s);
+                        break;
+                    default:
+                        Console.WriteLine("Invalid input");
                         break;
                 }
             }
